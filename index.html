@@ -10,14 +10,25 @@
     <script src="tetris.js"></script>
    
     <div class="gridContainer">
+
         <div id="grid" class="grid"></div>
         <div class='sideContainer'>
+
             <h2 id="Name">Tetris</h2>
             <h3>Score: <span id="score">0</span></h3>
+            <div id="next"><b>Next: </b></div>
             <div id="nextGrid" class="nextGrid"></div>
+
+                <ul id="instructions">
+                    <li><b>Instructions:</b></li>
+                    <li>Up Arrow - Rotate the Tetromino</li>
+                    <li>Left Arrow - Move the Tetromino Left</li>
+                    <li>Right Arrow - Move the Tetromino Right</li>
+                    <li>Down Arrow - Move the Tetromino Down</li>
+                </ul>
+                
             <button id="startButton">Start</button>
         </div>
     </div>
-    
 </body>
 </html>

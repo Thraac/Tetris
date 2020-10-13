@@ -2,15 +2,15 @@
     display: flex;
     margin: auto;
     width: 25%;
-    min-width: 400px;
+    min-width: 550px;
 }
 
 .sideContainer {
     margin-left: 20px;
     position: relative;
     float: left;
+    width: 300px;
 }
-
 
 #grid {
     width: 200px;
@@ -18,16 +18,12 @@
     background-color: gray;
     display: flex;
     flex-wrap: wrap; 
-    outline: 1px solid black;
-
-    
+    outline: 1px solid black;  
 }
 
 #grid div {
     height: 20px;
     width: 20px;
-    /* border: solid 1px;  */
-    
 }
 
 .nextGrid {
@@ -35,34 +31,40 @@
     height: 100px;
     display: flex;
     flex-wrap: wrap;
-    /* background-color: brown; */
-
 }
 
 .nextGrid div {
     width: 25px;
-    height: 25px;   
-    /* border: 1px solid; */
-    
+    height: 25px;      
 }
 
 .tetromino {
     background-color: aqua;
-    /* border: solid 1px; */
     box-sizing: border-box;
     border: 1px solid gray;
 }
 
 .nextTetromino {
     background-color: aqua;
-    /* border: solid 1px; */
     box-sizing: border-box;
     border: 1px solid white;
 }
 
+h2 {
+    display: block;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    font-size: 35px;
+}
+
+h3 {
+    display: block;
+    margin-top: 10px;
+}
+
 #startButton{
     position: absolute;
-    bottom: 0;
+    bottom: 0px;
     background-color: rgb(90, 192, 90);
     border: none;
     padding: 15px 20px;
@@ -77,4 +79,17 @@
 #name {
     position: absolute;
     top: 0px;
+}
+
+#instructions{
+    list-style-type: none; 
+    padding: 0; 
+    margin: 0; 
+    width: 300px;
+    position: absolute;
+    bottom: 55px;
+}
+
+#next {
+    margin-bottom: 5px;
 }

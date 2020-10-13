@@ -29,8 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     startButton.addEventListener('click', () => {
         if (timer) {
-            clearInterval(timer);
-            timer = null;
+            startButton.removeEventListener('click')
         } else {
             draw();
             timer = setInterval(moveDown, 1000);
@@ -38,10 +37,10 @@ document.addEventListener('DOMContentLoaded', () => {
             nextTetromino();
         }
     })
-
+    
     // Tetrominos
     const iTetromino = [
-        [1, width+1, width*2+1, width*3+1],
+        [0, width, width*2, width*3],
         [width, width+1, width+2, width+3],
         [2, width+2, width*2+2, width*3+2],
         [width*2, width*2+1, width*2+2, width*2+3],
@@ -84,11 +83,11 @@ document.addEventListener('DOMContentLoaded', () => {
     ]
     const theTetrominos = [iTetromino, jTetromino, lTetromino, oTetromino, sTetromino, tTetromino, zTetromino];
 
+    // creating tetrominos
     let currentPosition = 4;
     let currentRotation = 0;
     let randomTetromino = Math.floor(Math.random()*theTetrominos.length);
     let currentTetromino = theTetrominos[randomTetromino][currentRotation];
-    
     
     // Draw puts the tetromino on the grid and undraw removes the tetromino from the grid
     function draw() {
@@ -120,7 +119,6 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('keyup', playerControl)
 
     // Move tetrominos down every one second and keyboard commands to move tetrominos left, right, and down manually as well as rotating
-
     function moveDown() {
         undraw();
         currentPosition += width;
@@ -185,9 +183,9 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // next tetromino display shape
     const nextTetrominos = [
-        [1, nextWidth+1, nextWidth*2+1, nextWidth*3+1],     // tetromino i
+        [0, nextWidth, nextWidth*2, nextWidth*3],           // tetromino i
         [1, nextWidth+1, nextWidth*2, nextWidth*2+1],       // tetromino j
-        [1, nextWidth+1, nextWidth*2+1, nextWidth*2+2],     // tetromino l
+        [0, nextWidth, nextWidth*2, nextWidth*2+1],         // tetromino l
         [0, 1, nextWidth, nextWidth+1],                     // tetromino o
         [1, 2, nextWidth+0, nextWidth+1],                   // tetromino s
         [1, nextWidth, nextWidth+1, nextWidth+2],           // tetromino t
@@ -216,11 +214,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 row.forEach(index => {
                     squares[index].classList.remove('taken');
                     squares[index].classList.remove('tetromino');
-                    squares[index].style.backgroundColor = ''
+                    squares[index].style.backgroundColor = '';
                 })
             const squaresRemove = squares.splice(i, width);
             squares = squaresRemove.concat(squares);
-            squares.forEach(cell => grid.appendChild(cell))
+            squares.forEach(cell => grid.appendChild(cell));
             }
         }
     }
@@ -228,9 +226,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // game over
     function gameOver() {
         if (currentTetromino.some(index => squares[currentPosition + index].classList.contains('taken'))) {
-            scoreDisplay.innerHTML = 'end';
+            scoreDisplay.innerHTML = 'Game Over';
             clearInterval(timer);
-            
+            document.removeEventListener('keyup', playerControl)
         }
     }
 
